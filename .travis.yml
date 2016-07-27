@@ -37,5 +37,5 @@ install:
 script:
   - |
     invoke docker_machine_start
-    sleep 15
+    sleep 60
   - nosetests

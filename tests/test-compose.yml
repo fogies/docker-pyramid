@@ -1,9 +1,20 @@
-tests_main:
-  container_name: tests_main
+test_main:
+  container_name: test_main
   build: ..
-
-tests_nginx:
-  container_name: tests_nginx
-  image: "nginx"
+  environment:
+    GIT_REPOSITORY_SITE: "https://github.com/tractdb/tractdb-pyramid.git"
   ports:
-    - "80:80"
+    - "8080:8080"
+  volumes:
+    - "{{ CWD }}/tests/test-config/pyramid_config.ini:/docker-pyramid-site/pyramid_config.production.ini:ro"
+    - "{{ CWD }}/tests/test-secrets/couchdb_secrets.yml:/docker-pyramid-site/couchdb_secrets.yml:ro"
+  links:
+    - test_couchdb
+
+test_couchdb:
+  container_name: test_couchdb
+  build: "https://github.com/fogies/docker-couchdb.git"
+  ports:
+    - "5984:5984"
+  volumes:
+    - "{{ CWD }}/tests/test-secrets/couchdb_secrets.yml:/docker-couchdb-secrets/secrets.yml:ro"
