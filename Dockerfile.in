@@ -23,4 +23,15 @@ FROM {{ current_dockerfile_config.base_image }}
 # {% include 'base/ruby.Dockerfile' %}
 # {% include 'base/node.Dockerfile' %}
 ############################################################################ -#}
+{% include 'base/python.Dockerfile' %}
+
+################################################################################
+# Set up our entrypoint script.
+################################################################################
+COPY docker-pyramid-site/docker-pyramid-site-entrypoint.sh /docker-pyramid-site-entrypoint.sh
+RUN dos2unix /docker-pyramid-site-entrypoint.sh && \
+    chmod +x /docker-pyramid-site-entrypoint.sh
+
+# Run the wrapper script
+CMD ["/docker-pyramid-site-entrypoint.sh"]
 {# This comment gives us a newline at the end of the generated file #}

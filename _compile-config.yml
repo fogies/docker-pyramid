@@ -15,7 +15,7 @@ config:
     travis:
       version: 1.11.2-0~trusty
       compose_version: 1.8.0-rc1
-      compose_up_delay: 15
+      compose_up_delay: 60
 
   dockerfile:
     main:
@@ -31,3 +31,5 @@ jinja2:
       out: requirements3.in
     - in:  .travis.yml.in
       out: .travis.yml
+    - in:  docker-pyramid-site/docker-pyramid-site-entrypoint.sh.in
+      out: docker-pyramid-site/docker-pyramid-site-entrypoint.sh
