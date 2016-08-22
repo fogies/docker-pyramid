@@ -70,6 +70,7 @@ cd /docker-pyramid-site/site
 pip install -r requirements3.txt
 
 # Put our production config in the correct location
+rm -f pyramid_config.production.ini
 ln -s /docker-pyramid-site/pyramid_config.production.ini pyramid_config.production.ini
 
 # Build our site
