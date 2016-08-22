@@ -4,14 +4,7 @@ import unittest
 
 
 def setup():
-    docker_base.compose_ensure_up(
-        'tests/test-compose.yml',
-        'test_main'
-    )
-    docker_base.compose_ensure_up(
-        'tests/test-compose.yml',
-        'test_couchdb'
-    )
+    pass
 
 
 def teardown():
