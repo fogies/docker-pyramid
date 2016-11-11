@@ -138,6 +138,13 @@ RUN cd /usr/local/bin \
 	&& rm -f python-config && ln -s python3-config python-config
 
 ################################################################################
+# Expose any ports or persistent volumes.
+################################################################################
+
+# Port where we listen
+EXPOSE 8080
+
+################################################################################
 # Set up our entrypoint script.
 ################################################################################
 COPY docker-pyramid-site/docker-pyramid-site-entrypoint.sh /docker-pyramid-site-entrypoint.sh
