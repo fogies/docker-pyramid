@@ -26,6 +26,13 @@ FROM {{ current_dockerfile_config.base_image }}
 {% include 'base/python.Dockerfile' %}
 
 ################################################################################
+# Expose any ports or persistent volumes.
+################################################################################
+
+# Port where we listen
+EXPOSE 8080
+
+################################################################################
 # Set up our entrypoint script.
 ################################################################################
 COPY docker-pyramid-site/docker-pyramid-site-entrypoint.sh /docker-pyramid-site-entrypoint.sh
