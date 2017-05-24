@@ -1,13 +1,14 @@
 test_main:
   container_name: test_main
-  build: ..
+  build: ../../..
   environment:
     GIT_REPOSITORY_SITE: "https://github.com/tractdb/tractdb-pyramid.git"
   ports:
     - "8080:8080"
   volumes:
     - "{{ DOCKER_LOCALIZE_CWD }}/tests/test-config/pyramid_config.ini:/docker-pyramid-site/pyramid_config.production.ini:ro"
-    - "{{ DOCKER_LOCALIZE_CWD }}/tests/test-secrets/couchdb_secrets.yml:/docker-pyramid-site/couchdb_secrets.yml:ro"
+    - "{{ DOCKER_LOCALIZE_CWD }}/tests/test-secrets/secrets_couchdb.yml:/docker-pyramid-site/secrets_couchdb.yml:ro"
+    - "{{ DOCKER_LOCALIZE_CWD }}/tests/test-secrets/secrets_pyramid.yml:/docker-pyramid-site/secrets_pyramid.yml:ro"
   links:
     - test_couchdb
 
